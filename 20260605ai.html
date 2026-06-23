@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓咪樂園</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff8f1, #ffe8d1);
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #ff9f43, #ffb347) !important;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+        }
+
+        .nav-link {
+            transition: all .3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            color: #fff !important;
+        }
+
+        .form-control {
+            border-radius: 50px;
+        }
+
+        .btn-outline-success {
+            border-radius: 50px;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .btn-outline-success:hover {
+            background: #fff;
+            color: #ff9f43;
+        }
+
+        .container {
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            transition: .4s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, .18);
+        }
+
+        .card-img-top {
+            height: 280px;
+            object-fit: cover;
+            transition: .6s;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.08);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff7b00;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .card-title::before {
+            content: "🐾";
+            margin-right: 8px;
+        }
+
+        .card-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: #ffb347;
+            border-radius: 50px;
+        }
+
+        .card-text {
+            color: #666;
+            line-height: 1.9;
+        }
+
+        footer {
+            margin-top: 50px;
+            background: #2d3436;
+            padding: 25px 0;
+        }
+
+        footer .nav-link {
+            color: #ddd;
+        }
+
+        footer .nav-link:hover {
+            color: #ffb347;
+        }
+
+        body::before {
+            content: "🐾";
+            position: fixed;
+            top: 15%;
+            left: 5%;
+            font-size: 80px;
+            opacity: .05;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "🐾";
+            position: fixed;
+            right: 5%;
+            bottom: 10%;
+            font-size: 100px;
+            opacity: .05;
+            pointer-events: none;
+        }
+
+        @media (max-width:768px) {
+            .card-img-top {
+                height: 220px;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid"> <a class="navbar-brand" href="#"> <i class="fa-solid fa-cat"></i> 貓咪樂園 </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"> <a class="nav-link active" href="#"> <i class="fa-solid fa-house"></i> 首頁 </a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="#"> <i class="fa-solid fa-paw"></i> 貓咪品種 </a> </li>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown"> <i class="fa-solid fa-book-open"></i> 貓咪知識 </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">飼養指南</a></li>
+                            <li><a class="dropdown-item" href="#">健康照護</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">更多內容</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link disabled">施工中</a> </li>
+                </ul>
+                <form class="d-flex"> <input class="form-control me-2" type="search" placeholder="搜尋貓咪資訊"> <button
+                        class="btn btn-outline-success">Search</button> </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-warning">🐱 貓咪世界探索</h1>
+            <p class="text-muted"> 認識可愛貓咪的生活習性、熱門品種以及日常照護知識 </p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card"> <img src="/images/cat02.avif" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">英國短毛貓</h5>
+                        <p class="card-text"> 圓潤可愛的臉型與厚實柔軟的毛髮是英國短毛貓最大的特色。 個性沉穩溫和，不容易緊張，非常適合作為家庭陪伴貓咪。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card"> <img src="/images/cat04.avif" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">布偶貓</h5>
+                        <p class="card-text"> 布偶貓擁有夢幻般的藍色眼睛與柔順長毛， 性格溫柔親人，喜歡依偎在主人身旁， 是深受喜愛的大型貓咪品種。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card"> <img src="/images/cat03.avif" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">橘貓生活日記</h5>
+                        <p class="card-text"> 橘貓總是充滿活力與好奇心， 喜歡探索家中的每個角落， 同時也是零食和睡覺的忠實愛好者。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card"> <img src="/images/cat05.avif" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">貓咪照護指南</h5>
+                        <p class="card-text"> 提供乾淨飲水、均衡飲食與舒適環境， 並定期健康檢查及梳理毛髮， 能讓貓咪保持健康快樂的生活品質。 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul class="nav justify-content-center">
+            <li class="nav-item"> <a class="nav-link" href="#">關於我們</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#">貓咪知識</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#">聯絡資訊</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#">網站地圖</a> </li>
+        </ul>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
