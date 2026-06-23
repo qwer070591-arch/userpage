@@ -1,2 +1,5 @@
 text
-.
+git status
+git init
+git commit -m "你的註解"
+git push
