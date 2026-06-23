@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP商品管理系統</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/my.css">
+
+    <style>
+        :root {
+            --erp-primary: #1e293b;
+            --erp-secondary: #334155;
+            --erp-accent: #0ea5e9;
+            --erp-success: #22c55e;
+            --erp-warning: #f59e0b;
+            --erp-danger: #ef4444;
+            --erp-bg: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--erp-bg);
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        .container {
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        .display-3 {
+            background: linear-gradient(135deg, var(--erp-primary), var(--erp-secondary));
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            font-weight: 900;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .display-3::after {
+            content: "Bubble Tea Product Management System";
+            display: block;
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 10px;
+            color: #cbd5e1;
+        }
+
+        .table {
+            background-color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table-dark th {
+            background-color: var(--erp-primary) !important;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .table td {
+            vertical-align: middle;
+            padding: 14px;
+        }
+
+        .table tbody tr {
+            transition: all .3s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e0f2fe !important;
+            transform: scale(1.01);
+        }
+
+        .table td:nth-child(1) {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .table td:nth-child(2) {
+            font-weight: bold;
+        }
+
+        .table td:nth-child(3) {
+            color: var(--erp-success);
+            font-weight: bold;
+        }
+
+        .table td:nth-child(4) {
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        caption {
+            caption-side: bottom;
+            text-align: center;
+            color: gray;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        @media screen and (max-width:768px) {
+
+            .table-rwd thead,
+            caption {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                margin-bottom: 20px;
+                background-color: white;
+                border-radius: 12px;
+                border: none;
+                box-shadow: 0 3px 15px rgba(0, 0, 0, .12);
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                padding: 12px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .table-rwd tbody tr td:last-child {
+                border-bottom: none;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                font-size: 16px;
+                font-weight: bold;
+                color: var(--erp-accent);
+                display: block;
+                float: left;
+                width: 35%;
+                text-align: right;
+                padding-right: 15px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 65%;
+            }
+
+            .table-rwd tbody tr::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="display-3 text-center">
+            ERP 商品管理系統
+        </div>
+
+        <table class="table mt-3 table-bordered table-hover table-rwd">
+
+            <caption>
+                表1. 手搖飲料商品庫存管理表
+            </caption>
+
+            <thead class="table-dark">
+                <tr>
+                    <th>產品編號</th>
+                    <th>產品名稱</th>
+                    <th>產品價格</th>
+                    <th>產品數量</th>
+                    <th>產品備註</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT001</span></td>
+                    <td data-th="產品名稱"><span>珍珠奶茶</span></td>
+                    <td data-th="產品價格"><span>$65</span></td>
+                    <td data-th="產品數量"><span>120</span></td>
+                    <td data-th="產品備註"><span>熱銷商品</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT002</span></td>
+                    <td data-th="產品名稱"><span>波霸奶茶</span></td>
+                    <td data-th="產品價格"><span>$70</span></td>
+                    <td data-th="產品數量"><span>85</span></td>
+                    <td data-th="產品備註"><span>正常供應</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT003</span></td>
+                    <td data-th="產品名稱"><span>烏龍奶茶</span></td>
+                    <td data-th="產品價格"><span>$60</span></td>
+                    <td data-th="產品數量"><span>95</span></td>
+                    <td data-th="產品備註"><span>正常供應</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT004</span></td>
+                    <td data-th="產品名稱"><span>四季春青茶</span></td>
+                    <td data-th="產品價格"><span>$35</span></td>
+                    <td data-th="產品數量"><span>150</span></td>
+                    <td data-th="產品備註"><span>熱銷商品</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT005</span></td>
+                    <td data-th="產品名稱"><span>冬瓜檸檬</span></td>
+                    <td data-th="產品價格"><span>$50</span></td>
+                    <td data-th="產品數量"><span>75</span></td>
+                    <td data-th="產品備註"><span>正常供應</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT006</span></td>
+                    <td data-th="產品名稱"><span>百香綠茶</span></td>
+                    <td data-th="產品價格"><span>$55</span></td>
+                    <td data-th="產品數量"><span>90</span></td>
+                    <td data-th="產品備註"><span>正常供應</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT007</span></td>
+                    <td data-th="產品名稱"><span>蜂蜜檸檬</span></td>
+                    <td data-th="產品價格"><span>$60</span></td>
+                    <td data-th="產品數量"><span>65</span></td>
+                    <td data-th="產品備註"><span>庫存偏低</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT008</span></td>
+                    <td data-th="產品名稱"><span>芋頭鮮奶</span></td>
+                    <td data-th="產品價格"><span>$80</span></td>
+                    <td data-th="產品數量"><span>40</span></td>
+                    <td data-th="產品備註"><span>庫存偏低</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT009</span></td>
+                    <td data-th="產品名稱"><span>黑糖鮮奶</span></td>
+                    <td data-th="產品價格"><span>$85</span></td>
+                    <td data-th="產品數量"><span>38</span></td>
+                    <td data-th="產品備註"><span>庫存偏低</span></td>
+                </tr>
+
+                <tr>
+                    <td data-th="產品編號"><span>BT010</span></td>
+                    <td data-th="產品名稱"><span>紅茶拿鐵</span></td>
+                    <td data-th="產品價格"><span>$75</span></td>
+                    <td data-th="產品數量"><span>70</span></td>
+                    <td data-th="產品備註"><span>正常供應</span></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

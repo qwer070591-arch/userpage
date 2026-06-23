@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跑車展示網站</title>
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #11141a;
+            font-family: "Noto Sans HK", sans-serif;
+            color: #1E222B;
+            background-image: linear-gradient(to bottom, #525866);
+        }
+
+        .wrapper {
+            width: 1024px;
+            margin: 0 auto;
+            background-color: #111111;
+            box-shadow: 0 0 30px rgba(225, 6, 0, 0.25);
+        }
+
+        /* 主視覺 */
+        .imbox {
+            width: 1024px;
+            height: 400px;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+                url(images/car01.avif);
+            /* 建議去掉開頭的斜線，改用相對路徑 */
+            background-position: center;
+            background-size: cover;
+            border-bottom: 3px solid #E10600;
+        }
+
+        /* 導覽列 */
+        nav {
+            background-color: #111111;
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        nav ul {
+            display: inline-block;
+        }
+
+        nav ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        nav ul::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* 導覽按鈕 */
+        nav ul li a {
+            text-decoration: none;
+            display: block;
+            background-color: #1A1A1A;
+            color: #F5F5F5;
+            margin-right: 15px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 25px;
+            padding-right: 25px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s;
+        }
+
+        nav ul li a:hover {
+            background-color: #E10600;
+            color: #ffffff;
+            border-color: #E10600;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.6);
+        }
+
+        /* 內容區 */
+        .content {
+            background-color: #151515;
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+            line-height: 1.8;
+        }
+
+        .content h1 {
+            font-size: 42px;
+            color: #E10600;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(225, 6, 0, 0.5);
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #D9D9D9;
+            margin-bottom: 20px;
+            font-weight: inherit;
+        }
+
+        /* 按鈕 */
+        .content a {
+            display: block;
+            background-color: #E10600;
+            width: 160px;
+            height: 45px;
+            margin: 25px auto 0 auto;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 45px;
+            border-radius: 6px;
+            transition: all 0.4s;
+            border: 1px solid transparent;
+        }
+
+        .content a:hover {
+            background-color: #111111;
+            border: 1px solid #E10600;
+            color: #E10600;
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111111;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: #BFC5CC;
+            font-size: 18px;
+            border-top: 2px solid #E10600;
+            letter-spacing: 2px;
+        }
+
+        /* 媒體查詢修正 1：補上空格，將 .imgbox 改為 .imbox */
+        @media screen and (max-width: 1200px) and (min-width: 1025px) {
+            .imbox {
+                background-image: url(images/car03.avif);
+            }
+        }
+
+        /* 媒體查詢修正 2：將 .imgbox 改為 .imbox，修正冒號與未定義變數 */
+        @media screen and (max-width: 1024px) {
+            .wrapper {
+                width: 100%;
+            }
+
+            .imbox {
+                width: 100%;
+                background-image: url(images/car02.avif);
+                height: 140px;
+            }
+
+            nav ul {
+                display: block;
+                padding-left: 10px;
+                margin: 0;
+            }
+
+            nav ul li {
+                float: none;
+                margin-bottom: 10px;
+            }
+
+            nav ul li a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                font-size: 14px;
+                background-color: #1A1A1A;
+                /* 移除未定義變數，改回原本顏色 */
+            }
+
+            .content {
+                padding-left: 10px;
+                /* 修正多打的冒號 */
+                padding-right: 10px;
+            }
+
+            .content p {
+                font-size: 16px;
+                line-height: 1.4;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="banner">
+            <div class="imbox"></div>
+
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-house"></i>首頁</a></li>
+                    <li><a href="#"><i class="fa-solid fa-newspaper btn-text-secondary"></i>最新消息</a></li>
+                    <li><a href="#"><i class="fa-solid fa-newspaper"></i>產品介紹</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bell"></i>關於我們</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bell"></i>聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <h1>超跑極速世界</h1>
+            <p class="fw-100">
+                探索極致性能與奢華工藝，感受跑車帶來的速度魅力與未來科技。
+                跑車不僅是交通工具，更是速度與激情的象徵，代表著人類對極限的追求與創新的精神。
+            </p>
+            <p class="fw-200">
+                我們致力於打造頂級跑車展示平台，呈現最震撼的視覺體驗與品牌精神。
+            </p>
+            <p class="fw-900">
+                無論是經典超跑、賽道猛獸，或未來電能性能車款，都能在這裡找到速度的靈魂。
+            </p>
+            <a href="#">立即探索</a>
+        </div>
+
+        <div class="footer">
+            Power By xxxx 2026.05
+        </div>
+
+    </div>
+
+</body>
+
+</html>
