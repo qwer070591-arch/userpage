@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>派對活動企劃時間軸</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff5f8, #eef6ff);
+        }
+
+        .display-2 {
+            font-weight: 900;
+            color: #6c63ff !important;
+        }
+
+        .imgbox {
+            height: 220px;
+            background-position: center;
+            background-size: cover;
+            border-radius: 20px;
+        }
+
+        .textbox {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+        }
+
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(#ff7eb3, #7b68ee);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section-pointer {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            border: 5px solid #ff7eb3;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        /* 四種卷簾共同設定 */
+
+        .roller-t,
+        .roller-b,
+        .roller-l,
+        .roller-r {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+        }
+
+        .roller_box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .4);
+
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 5;
+        }
+
+        /* 上往下 */
+        .roller-t .roller_box {
+            top: -100%;
+            transition: top 1.2s;
+        }
+
+        .roller-t:hover .roller_box {
+            top: 0;
+        }
+
+        /* 下往上 */
+        .roller-b .roller_box {
+            bottom: -100%;
+            transition: bottom 1.2s;
+        }
+
+        .roller-b:hover .roller_box {
+            bottom: 0;
+        }
+
+        /* 左往右 */
+        .roller-l .roller_box {
+            left: -100%;
+            transition: left 1.2s;
+        }
+
+        .roller-l:hover .roller_box {
+            left: 0;
+        }
+
+        /* 右往左 */
+        .roller-r .roller_box {
+            right: -100%;
+            transition: right 1.2s;
+        }
+
+        .roller-r:hover .roller_box {
+            right: 0;
+        }
+
+        .roller_box .btn {
+            background: linear-gradient(45deg, #ff6ec4, #7873f5);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: bold;
+        }
+
+        .roller_box .btn:hover {
+            transform: scale(1.1);
+            transition: .5s;
+        }
+
+        @media screen and (max-width:768px) {
+
+            .timeline-section::before,
+            .timeline-section-pointer::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4">
+
+        <div class="display-2 text-center my-5">
+            🎉 派對活動企劃
+        </div>
+
+        <div class="timeline-section">
+
+            <!-- 第一區 -->
+            <div class="row align-items-center timeline-section-pointer">
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="roller-t">
+
+                        <div class="roller_box">
+                            <button class="btn btn-primary">
+                                查看活動
+                            </button>
+                        </div>
+
+                        <div class="imgbox" style="background-image:url(images/cat01.avif)">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="textbox">
+
+                        <div class="h2 text-danger">
+                            ① 主題發想
+                        </div>
+
+                        <p>
+                            與客戶討論派對主題、色系與需求，
+                            依照生日派對、求婚、節慶活動或公司尾牙，
+                            設計專屬的歡樂風格與流程安排。
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- 第二區 -->
+            <div class="row align-items-center flex-xl-row-reverse timeline-section-pointer">
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="roller-b">
+
+                        <div class="roller_box">
+                            <button class="btn btn-primary">
+                                查看活動
+                            </button>
+                        </div>
+
+                        <div class="imgbox" style="background-image:url(images/cat02.avif)">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="textbox">
+
+                        <div class="h2 text-warning">
+                            ② 活動規劃
+                        </div>
+
+                        <p>
+                            安排主持人、節目流程、餐點與賓客動線，
+                            並依照預算進行資源整合，
+                            讓活動進行更加順暢且充滿驚喜。
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 第三區 -->
+            <div class="row align-items-center timeline-section-pointer">
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="roller-l">
+
+                        <div class="roller_box">
+                            <button class="btn btn-primary">
+                                查看活動
+                            </button>
+                        </div>
+
+                        <div class="imgbox" style="background-image:url(images/cat03.avif)">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="textbox">
+
+                        <div class="h2 text-success">
+                            ③ 場地佈置
+                        </div>
+
+                        <p>
+                            利用氣球、燈光、花藝以及拍照區設計，
+                            打造充滿歡樂氣氛的夢幻場景，
+                            讓每位來賓都能留下難忘回憶。
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 第四區 -->
+            <div class="row align-items-center flex-xl-row-reverse timeline-section-pointer">
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="roller-r">
+
+                        <div class="roller_box">
+                            <button class="btn btn-primary">
+                                查看活動
+                            </button>
+                        </div>
+
+                        <div class="imgbox" style="background-image:url(images/cat04.avif)">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mt-3">
+
+                    <div class="textbox">
+
+                        <div class="h2 text-primary">
+                            ④ 活動執行
+                        </div>
+
+                        <p>
+                            專業團隊全程掌控燈光、音響及活動流程，
+                            帶領現場氣氛達到最高點，
+                            讓每位參與者享受最精彩的派對時光。
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
