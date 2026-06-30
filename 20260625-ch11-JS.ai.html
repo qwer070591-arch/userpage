@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧產品建檔系統</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            transition: .25s;
+        }
+
+        body {
+            background:
+                linear-gradient(135deg, #eef4ff 0%, #f7faff 100%);
+            color: #1e293b;
+            font-family: "Segoe UI", sans-serif;
+            min-height: 100vh;
+        }
+
+        .be-light {
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        /* =====================
+           Title
+        ====================== */
+
+        .main-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .main-title::before,
+        .main-title::after {
+            content: "";
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #2563eb);
+            display: inline-block;
+            margin: 0 15px;
+            vertical-align: middle;
+            border-radius: 10px;
+        }
+
+        /* =====================
+           Main Panel
+        ====================== */
+
+        .unified-tech-panel {
+            background: rgba(255,255,255,.95);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.08),
+                0 0 0 1px rgba(255,255,255,.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .panel-input-section {
+            padding: 40px;
+        }
+
+        .panel-output-section {
+            background: #f8fbff;
+            border-top: 2px dashed #dbeafe;
+            padding: 35px;
+        }
+
+        .tech-section-title {
+            color: #2563eb;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .tech-section-title::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: #2563eb;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* =====================
+           Inputs
+        ====================== */
+
+        .tech-input-group {
+            border-left: 4px solid #dbeafe;
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tech-input-group:focus-within {
+            border-color: #2563eb;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 14px !important;
+            border: 2px solid #e2e8f0 !important;
+            background: #fafcff !important;
+            box-shadow: none !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 5px rgba(37,99,235,.12) !important;
+        }
+
+        .form-floating label {
+            color: #64748b;
+        }
+
+        /* =====================
+           Buttons
+        ====================== */
+
+        .btn-primary {
+            border: none !important;
+            background:
+                linear-gradient(135deg,#38bdf8,#2563eb) !important;
+            border-radius: 14px;
+            font-weight: 700;
+            padding: 12px 28px;
+            box-shadow: 0 8px 20px rgba(37,99,235,.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            border-radius: 14px;
+            padding: 12px 28px;
+        }
+
+        /* =====================
+           Topping Cards
+        ====================== */
+
+        .topping-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 15px;
+        }
+
+        .topping-card {
+            position: relative;
+        }
+
+        .topping-card input {
+            display: none;
+        }
+
+        .topping-card label {
+            display: block;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .topping-card input:checked + label {
+            background:
+                linear-gradient(135deg,#eff6ff,#dbeafe);
+            border-color: #2563eb;
+            color: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37,99,235,.15);
+        }
+
+        /* =====================
+           Supply Buttons
+        ====================== */
+
+        .supply-wrapper {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .supply-card input {
+            display: none;
+        }
+
+        .supply-card label {
+            padding: 14px 30px;
+            border-radius: 50px;
+            border: 2px solid #dbeafe;
+            cursor: pointer;
+            background: white;
+            font-weight: 700;
+        }
+
+        .supply-card input:checked + label {
+            background:
+                linear-gradient(135deg,#38bdf8,#2563eb);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(37,99,235,.3);
+        }
+
+        /* =====================
+           Status Switch
+        ====================== */
+
+        .status-box {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        #pstatus_text {
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        /* =====================
+           Output
+        ====================== */
+
+        #showmessage {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit,minmax(220px,1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            background: white;
+            border-left: 5px solid #2563eb;
+            border-radius: 15px;
+            padding: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.05);
+            animation: fadeUp .4s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =====================
+           Mobile
+        ====================== */
+
+        @media(max-width:768px){
+
+            .panel-input-section,
+            .panel-output-section{
+                padding:25px;
+            }
+
+            .topping-wrapper{
+                grid-template-columns:1fr;
+            }
+
+            .supply-wrapper{
+                flex-direction:column;
+            }
+
+        }
+
+    </style>
+    </head>
+
+<body>
+    <div class="be-light">
+        <div class="container">
+
+            <div class="main-title">
+                智慧產品建檔系統
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <div class="unified-tech-panel">
+
+                        <!-- ================= INPUT ================= -->
+                        <div class="panel-input-section">
+
+                            <div class="tech-section-title">
+                                DATA INPUT
+                            </div>
+
+                            <!-- 訂購人 -->
+                            <div class="tech-input-group">
+                                <div class="form-floating">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="pname"
+                                           placeholder=" ">
+                                    <label>訂購人(1~6字)</label>
+
+                                    <div class="valid-feedback">
+                                        ✓ 名稱符合規定
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        ✗ 名稱不符合規定
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 數量 -->
+                            <div class="tech-input-group">
+                                <label class="form-label">
+                                    數量 (1~10)
+                                </label>
+
+                                <input type="number"
+                                       class="form-control"
+                                       id="pnum"
+                                       value="1"
+                                       min="1"
+                                       max="10">
+
+                                <div class="valid-feedback">
+                                    ✓ 數量正確
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    ✗ 數量錯誤
+                                </div>
+                            </div>
+
+                            <!-- 型號 -->
+                            <div class="tech-input-group">
+                                <label class="form-label">
+                                    產品型號
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       id="pstandard"
+                                       list="datalistoption"
+                                       placeholder="請輸入型號">
+
+                                <datalist id="datalistoption">
+                                    <option value="Phone17">
+                                    <option value="Phone16">
+                                    <option value="Phone15">
+                                    <option value="Phone14">
+                                    <option value="Phone13">
+                                    <option value="Phone12">
+                                </datalist>
+
+                                <div class="valid-feedback">
+                                    ✓ 型號符合規定
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    ✗ 型號錯誤
+                                </div>
+                            </div>
+
+                            <!-- 規格 -->
+                            <div class="tech-input-group">
+                                <label class="form-label">
+                                    產品規格
+                                </label>
+
+                                <select id="psize"
+                                        class="form-select">
+
+                                    <option value="" selected disabled>
+                                        請選擇規格
+                                    </option>
+
+                                    <option value="Pro Max">
+                                        Pro Max
+                                    </option>
+
+                                    <option value="Pro">
+                                        Pro
+                                    </option>
+
+                                    <option value="Medium">
+                                        Medium
+                                    </option>
+
+                                    <option value="Mini">
+                                        Mini
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <!-- 配件 -->
+                            <div class="tech-input-group">
+
+                                <label class="form-label">
+                                    加購配件（至少一項）
+                                </label>
+
+                                <div class="topping-wrapper"
+                                     id="topping_group">
+
+                                    <div class="topping-card">
+                                        <input type="checkbox"
+                                               id="top1"
+                                               class="topping_item"
+                                               value="充電頭">
+
+                                        <label for="top1">
+                                            🔌 充電頭
+                                        </label>
+                                    </div>
+
+                                    <div class="topping-card">
+                                        <input type="checkbox"
+                                               id="top2"
+                                               class="topping_item"
+                                               value="充電線">
+
+                                        <label for="top2">
+                                            ⚡ 充電線
+                                        </label>
+                                    </div>
+
+                                    <div class="topping-card">
+                                        <input type="checkbox"
+                                               id="top3"
+                                               class="topping_item"
+                                               value="保護貼">
+
+                                        <label for="top3">
+                                            🛡️ 保護貼
+                                        </label>
+                                    </div>
+
+                                    <div class="topping-card">
+                                        <input type="checkbox"
+                                               id="top4"
+                                               class="topping_item"
+                                               value="手機殼">
+
+                                        <label for="top4">
+                                            📱 手機殼
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- 狀態 -->
+                            <div class="status-box mb-4">
+
+                                <div class="form-check form-switch">
+
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           id="pstatus"
+                                           checked>
+
+                                    <label id="pstatus_text">
+                                        目前狀態：上架
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <!-- 配送 -->
+                            <div class="tech-input-group">
+
+                                <label class="form-label">
+                                    供應方式
+                                </label>
+
+                                <div class="supply-wrapper">
+
+                                    <div class="supply-card">
+                                        <input type="radio"
+                                               name="supply"
+                                               id="sup1"
+                                               value="快遞">
+
+                                        <label for="sup1">
+                                            🚚 快遞
+                                        </label>
+                                    </div>
+
+                                    <div class="supply-card">
+                                        <input type="radio"
+                                               name="supply"
+                                               id="sup2"
+                                               value="店取">
+
+                                        <label for="sup2">
+                                            🏪 店取
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="text-end mt-4">
+
+                                <button class="btn btn-danger me-2"
+                                        id="cancel_btn">
+                                    取消
+                                </button>
+
+                                <button class="btn btn-primary"
+                                        id="ok_btn">
+                                    確認建檔
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ================= OUTPUT ================= -->
+
+                        <div class="panel-output-section">
+
+                            <div class="tech-section-title">
+                                DATACENTER
+                            </div>
+
+                            <div id="showmessage">
+
+                                <div class="text-center text-muted py-4">
+
+                                    等待資料輸入...
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+
+    <script>
+
+        let flag_pname = false;
+        let flag_pnum = true;
+        let flag_pstandard = false;
+        let flag_psize = false;
+        let flag_topping = false;
+        let flag_supply = false;
+
+
+        $(function () {
+
+            // pname
+            $("#pname").on("input", function () {
+
+                let val = $(this).val().trim();
+
+                if (val.length >= 1 && val.length <= 6) {
+
+                    $(this)
+                        .removeClass("is-invalid")
+                        .addClass("is-valid");
+
+                    flag_pname = true;
+
+                } else {
+
+                    $(this)
+                        .removeClass("is-valid")
+                        .addClass("is-invalid");
+
+                    flag_pname = false;
+                }
+
+            });
+
+
+            // pnum
+            $("#pnum").on("input", function () {
+
+                let val = Number($(this).val());
+
+                if (val >= 1 && val <= 10) {
+
+                    $(this)
+                        .removeClass("is-invalid")
+                        .addClass("is-valid");
+
+                    flag_pnum = true;
+
+                } else {
+
+                    $(this)
+                        .removeClass("is-valid")
+                        .addClass("is-invalid");
+
+                    flag_pnum = false;
+                }
+
+            });
+
+
+            // standard
+            $("#pstandard").on("input", function () {
+
+                let val = $(this).val().trim();
+
+                if (val.length >= 1 && val.length <= 8) {
+
+                    $(this)
+                        .removeClass("is-invalid")
+                        .addClass("is-valid");
+
+                    flag_pstandard = true;
+
+                } else {
+
+                    $(this)
+                        .removeClass("is-valid")
+                        .addClass("is-invalid");
+
+                    flag_pstandard = false;
+                }
+
+            });
+
+
+            // size
+            $("#psize").on("change", function () {
+
+                flag_psize = $(this).val() !== "";
+
+            });
+
+
+            // topping
+            $(".topping_item").on("change", function () {
+
+                flag_topping =
+                    $(".topping_item:checked").length > 0;
+
+            });
+
+
+            // supply
+            $("input[name='supply']")
+                .on("change", function () {
+
+                    flag_supply = true;
+
+                });
+
+
+            // status
+            $("#pstatus").on("change", function () {
+
+                if ($(this).prop("checked")) {
+
+                    $("#pstatus_text")
+                        .text("目前狀態：上架");
+
+                } else {
+
+                    $("#pstatus_text")
+                        .text("目前狀態：下架");
+
+                }
+
+            });
+
+
+            // cancel
+            $("#cancel_btn").click(function () {
+
+                location.reload();
+
+            });
+
+
+            // ok
+            $("#ok_btn").click(function () {
+
+                if (
+                    flag_pname &&
+                    flag_pnum &&
+                    flag_pstandard &&
+                    flag_psize &&
+                    flag_topping &&
+                    flag_supply
+                ) {
+
+                    let toppingArray = [];
+
+                    $(".topping_item:checked")
+                        .each(function () {
+
+                            toppingArray.push(
+                                $(this).val()
+                            );
+
+                        });
+
+
+                    let supply =
+                        $("input[name='supply']:checked")
+                        .val();
+
+
+                    let status =
+                        $("#pstatus").prop("checked")
+                        ? "上架"
+                        : "下架";
+
+
+                    $("#showmessage").html(`
+
+                        <div class="info-item">
+                            👤 <b>訂購人：</b>
+                            ${$("#pname").val()}
+                        </div>
+
+                        <div class="info-item">
+                            🔢 <b>數量：</b>
+                            ${$("#pnum").val()}
+                        </div>
+
+                        <div class="info-item">
+                            📱 <b>型號：</b>
+                            ${$("#pstandard").val()}
+                        </div>
+
+                        <div class="info-item">
+                            ⚙️ <b>規格：</b>
+                            ${$("#psize").val()}
+                        </div>
+
+                        <div class="info-item">
+                            🛍️ <b>配件：</b>
+                            ${toppingArray.join(" / ")}
+                        </div>
+
+                        <div class="info-item">
+                            📦 <b>狀態：</b>
+                            ${status}
+                        </div>
+
+                        <div class="info-item">
+                            🚚 <b>配送：</b>
+                            ${supply}
+                        </div>
+
+                    `);
+
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "建檔成功",
+                        text: "資料已寫入 Datacenter",
+                        confirmButtonColor: "#2563eb"
+                    });
+
+                } else {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "欄位驗證失敗",
+                        text: "請完整填寫所有資料"
+                    });
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
