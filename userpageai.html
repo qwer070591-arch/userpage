@@ -6,230 +6,312 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個人首頁</title>
     <link rel="stylesheet" href="css/all.min.css">
+
     <style>
         :root {
-            /* 首頁橫幅 (Hero Banner) */
-            --banner-bg: #1a202c;
-            --banner-text: #f7fafc;
+            --banner-bg: #0f172a;
+            --banner-text: #f8fafc;
 
-            /* 個人簡介 & 學經歷 (About & Experience) */
-            --page-bg: #edf2f7; /* 微調：讓底色比卡片略暗，才有層次感 */
-            --text-main: #2d3748;
-            --text-muted: #718096;
-            --timeline-line: #e2e8f0;
+            --page-bg: #f1f5f9;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
 
-            /* 技能 (Skills) */
-            --skill-tag-bg: #edf2f7;
-            --skill-tag-text: #2d3748;
-
-            /* 作品集 (Portfolio) */
             --card-bg: #ffffff;
             --card-border: #e2e8f0;
-            --project-status-online: #48bb78;
-            --project-status-dev: #ecc94b;
 
-            /* 聯絡我 & CTA 按鈕 (Contact & Buttons) */
-            --cta-bg: #3182ce;
+            --cta-bg: #3b82f6;
             --cta-text: #ffffff;
-            --cta-hover: #2b6cb0;
+            --cta-hover: #2563eb;
 
-            /* 裝飾與次要標題 (Accents) */
-            --section-title: #4a5568;
-            --link-color: #3182ce;
-            --link-hover: #2b6cb0;
+            --accent: #60a5fa;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--cta-text);
             margin: 0;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
+            background: var(--page-bg);
+            color: var(--text-main);
         }
 
-        /* s01 橫幅響應式處理：桌機用滿版，手機用彈性排列 */
+        /* ===== HERO ===== */
         .s01 {
-            background-color: var(--page-bg);
             min-height: 100vh;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-sizing: border-box;
-            padding: 40px 20px;
+            position: relative;
+            padding: 60px 20px;
             overflow: hidden;
+
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
         }
 
-        /* 整合並修正四個角落的方塊，加入 z-index 確保不被蓋住 */
-        .s01 .box01, .s01 .box02, .s01 .box03, .s01 .box04 {
-            width: 200px;
-            height: 200px;
-            background-color: var(--skill-tag-text);
+        /* 柔化裝飾方塊 */
+        .s01 .box01,
+        .s01 .box02,
+        .s01 .box03,
+        .s01 .box04 {
+            width: 180px;
+            height: 180px;
             position: absolute;
-            z-index: 1;
-            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
         }
 
-        .s01 .box01 { top: 0; left: 0; }
-        .s01 .box02 { top: 0; right: 0; }
-        .s01 .box03 { bottom: 0; left: 0; }
-        .s01 .box04 { bottom: 0; right: 0; }
+        .s01 .box01 {
+            top: -40px;
+            left: -40px;
+        }
 
-        /* 中間的主體圖片區塊 */
+        .s01 .box02 {
+            top: -40px;
+            right: -40px;
+        }
+
+        .s01 .box03 {
+            bottom: -40px;
+            left: -40px;
+        }
+
+        .s01 .box04 {
+            bottom: -40px;
+            right: -40px;
+        }
+
+        /* 圖片主體 */
         .s01 .userImg {
             position: absolute;
-            top: 100px;
-            left: 100px;
-            bottom: 100px;
-            right: 100px;
-            background-color: var(--section-title);
+            top: 90px;
+            left: 90px;
+            right: 90px;
+            bottom: 90px;
+
             background-image: url(images/cat03.avif);
-            background-position: center center;
             background-size: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background-position: center;
+
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            filter: brightness(0.9);
+
             z-index: 2;
         }
 
-        /* 橫幅中的文字內容 */
+        /* 遮罩讓文字更清楚 */
+        .s01 .userImg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1));
+            border-radius: 20px;
+        }
+
+        /* 文字區 */
         .userText {
             position: absolute;
-            top: 15%;
-            left: 15%;
-            right: 40%;
+            top: 18%;
+            left: 10%;
+            max-width: 520px;
             z-index: 3;
             color: var(--banner-text);
         }
 
-        .userText h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .userText h2 { font-size: 1.5rem; margin-bottom: 15px; }
-        .userText p { font-size: 1.1rem; line-height: 1.6; }
+        .userText h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
 
-        /* s02作品區 */
+        .userText h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+
+        .userText p {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            width: 60px;
+            background: var(--accent);
+            margin: 15px 0;
+        }
+
+        /* ===== WORKS ===== */
         .s02 {
-            padding: 80px 10%;
-            background-color: var(--card-bg);
+            padding: 90px 10%;
             text-align: center;
         }
 
         .s02 h2 {
-            font-size: 36px;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
             color: var(--text-main);
-            margin-bottom: 40px;
         }
 
-        /* 使用 Grid 網格系統做高彈性響應式排版 */
         .s02 .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
+            gap: 28px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .s02 .card {
-            background-color: var(--page-bg);
-            padding: 30px 25px;
-            text-align: left;
-            border-radius: 12px;
+            background: var(--card-bg);
             border: 1px solid var(--card-border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: left;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s ease;
         }
 
         .s02 .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
         }
 
         .s02 .card h3 {
-            color: var(--text-main);
             margin-top: 0;
-            font-size: 20px;
-            margin-bottom: 12px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         .s02 .card p {
-            line-height: 1.6;
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 0.95rem;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
 
         .s02 .card a {
             display: inline-block;
-            align-self: flex-start;
-            padding: 10px 20px;
-            background-color: var(--cta-bg); 
-            color: var(--cta-text); 
-            text-decoration: none; 
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--cta-bg);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
         }
 
         .s02 .card a:hover {
-            background-color: var(--cta-hover);
+            background: var(--cta-hover);
         }
 
-        /* --- 響應式斷點 (Media Queries) --- */
-        
-        /* 當螢幕尺寸小於平板或手機時 (992px以下) */
+        /* ===== RWD ===== */
         @media (max-width: 992px) {
             .s01 {
-                height: auto; /* 解除 100vh 限制，改由內容撐開 */
-                padding: 80px 24px;
-            }
-            /* 關閉四個角落裝飾方塊，避免手機畫面太亂 */
-            .s01 .box01, .s01 .box02, .s01 .box03, .s01 .box04 {
-                display: none;
-            }
-            /* 讓中間大圖不再用 absolute，改為一般的流動區塊 */
-            .s01 .userImg {
-                position: relative;
-                top: auto; left: auto; right: auto; bottom: auto;
-                width: 100%;
-                max-width: 500px;
-                height: 350px;
-                margin-bottom: 30px;
-            }
-            /* 讓文字在手機上正常排序，並改用深色字體以利在淺灰底上閱讀 */
-            .userText {
-                position: relative;
-                top: auto; left: auto; right: auto;
-                width: 100%;
-                max-width: 500px;
-                color: var(--text-main);
+                flex-direction: column;
                 text-align: center;
             }
-            /* 將這段改為彈性垂直排列 */
-            .s01 {
-                flex-direction: column;
+
+            .s01 .userImg {
+                position: relative;
+                inset: auto;
+                width: 100%;
+                height: 320px;
+                margin-bottom: 30px;
+            }
+
+            .userText {
+                position: relative;
+                left: auto;
+                top: auto;
+                text-align: center;
+                color: white;
+            }
+
+            .s01 .box01,
+            .s01 .box02,
+            .s01 .box03,
+            .s01 .box04 {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
+            .userText h1 {
+                font-size: 2.2rem;
+            }
+
             .s02 {
                 padding: 60px 5%;
             }
-            .s01 .userImg {
-                height: 250px;
+        }
+
+        /* ===== 滾動動畫（Fade In）===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 讓 hero 文字也有動畫 */
+        .userText {
+            animation: heroFade 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes heroFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .userText h1 { font-size: 2rem; }
-            .userText h2 { font-size: 1.2rem; }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 卡片延遲效果（更有層次） */
+        .s02 .card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .s02 .card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .s02 .card:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .s02 .card:nth-child(4) {
+            transition-delay: 0.4s;
         }
     </style>
 </head>
 
 <body>
+
     <section class="s01">
-        <div class="box01"> </div>
-        <div class="box02"> </div>
-        <div class="box03"> </div>
-        <div class="box04"> </div>
-        <div class="userImg"> </div>
+        <div class="box01"></div>
+        <div class="box02"></div>
+        <div class="box03"></div>
+        <div class="box04"></div>
+
+        <div class="userImg"></div>
+
         <div class="userText">
             <h1>xxx履歷</h1>
             <hr>
@@ -240,23 +322,26 @@
 
     <section class="s02">
         <h2>我的作品</h2>
-        
+
         <div class="container">
             <div class="card">
                 <h3>切版練習</h3>
                 <p>使用HTML，CSS練習切版。</p>
-                <a href="20260605-ch5ai.html" target="_blank">查看作品</a>
+                <a href="20260605-ch5ai.html">查看作品</a>
             </div>
+
             <div class="card">
                 <h3>個人網站</h3>
                 <p>使用HTML，CSS，JavaScript製作個人展示網站。</p>
                 <a href="20260605ai.html">查看作品</a>
             </div>
+
             <div class="card">
                 <h3>企業官網</h3>
                 <p>使用HTML，CSS，JavaScript製作企業官方網站。</p>
                 <a href="20260625-ch11-JS.ai.html">查看作品</a>
             </div>
+
             <div class="card">
                 <h3>部落格平台</h3>
                 <p>使用HTML，CSS，JavaScript製作部落格平台。</p>
@@ -264,6 +349,25 @@
             </div>
         </div>
     </section>
+    <script>
+        const items = document.querySelectorAll('.card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        // 套用在卡片 + 你想要動畫的區塊
+        items.forEach(item => {
+            item.classList.add('reveal');
+            observer.observe(item);
+        });
+    </script>
 </body>
 
 </html>
