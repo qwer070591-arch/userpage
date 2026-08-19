@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js 基本語法</title>
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            transition: transform 2s;
+        }
+
+        .rotate01 {
+            transform: rotate(45deg);
+        }
+
+        .rotate02 {
+            transform: rotate(60deg);
+        }
+
+        .rotate03 {
+            transform: rotate(75deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="display-2 fw-bold my-4">{{ title }}</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="display-5 mb-3 fw-bold text-primary">1.綁定資料 v-model</div>
+                <input type="text" name="" id="" class="form-control form-control-lg " placeholder="輸入字串!"
+                    v-model="text01">
+                <div class="fs-3">你輸入的字串為:<span class="text-info fw-bold">{{ text01 }}</span></div>
+            </div>
+            <div class="col-12">
+                <div class="display-5 mb-3 fw-bold text-primary">2. 綁定資料 v-bind</div>
+                <img v-bind:src="imgsrc" v-bind:class="classname" alt="">
+            </div>
+
+            <div class="col-12">
+                <div class="display-5 mb-3 fw-bold text-primary">3. 迴圈 v-for ，判斷式 v-if</div>
+                <ul class="list-group">
+                    <template v-for="item in product">
+                        <li class="list-group-item" v-if="item.price > 100">{{ item.name }}
+                            一公斤---{{ item.price }}元
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <div class="col-12">
+                <div class="display-5 my-3 fw-bold text-primary">4. v-on 監聽</div>
+                <div class="mb-3">
+                    <label for="" class="form-label">輸入一段文字</label>
+                    <input type="text" class="form-control form-control-lg" v-model="rText">
+                </div>
+                <button class="btn btn-success" v-on:click="reverseText">反轉文字</button>
+                <div class="fs-3">反轉文字 :<span class="text-info fs-2">{{ the_rText }}</span></div>
+            </div>
+            <div class="col-12">
+                <div class="display-5 my-3 fw-bold text-primary">4. v-on 監聽(練習)</div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="fs-1 fw-900 text-center">珍珠奶茶</div>
+                        <div class="fs-4 fw-900 text-center">單價: <span class="display-3 text-danger">60</span>元</div>
+                        <div class="d-flex justify-content-center align-items-center mb-4">
+                            <button class="btn btn-danger btn-lg" v-on:click="minNum">-</button>
+                            <div class="display-4 fw-900 mx-4">{{ num }}</div>
+                            <button class="btn btn-danger btn-lg" v-on:click="addNum">+</button>
+                        </div>
+                        <div class="fs-2">
+                            總金額
+                            <span class="fs-2 text-primary fw-900">{{ total }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="display-5 my-3 fw-bold text-primary">5.動態綁定(常常使用在class)</div>
+                <div class="box border border-success"
+                    v-bind:class="{ 'rotate01': isRotate01, 'rotate02': isRotate02, 'rotate03': isRotate03}"></div>
+                <button class="btn btn-success mt-2" v-on:click="isRotate01 = !isRotate01">旋轉45度</button>
+                <button class="btn btn-success mt-2" v-on:click="isRotate02 = !isRotate02">旋轉60度</button>
+                <button class="btn btn-success mt-2" v-on:click="isRotate03 = !isRotate03">旋轉75度</button>
+            </div>
+            <div class="col-12">
+                <div class="display-5 my-3 fw-bold text-primary">6.computed(即時運算)</div>
+                <input type="text" class="form-control form-control-lg" v-model="rText06">
+                <div class="fs-2">字串反轉(即時顯示): <span class="fw-900 text-danger">{{ reverseText01 }}</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script>
+        const App = {
+            data() {
+                return {
+                    title: "Vue js 基本語法",
+                    content: "硬體推薦本身師傅面議發貼最後記憶東方怎麼樣居民新鮮網通，表演各個要是宣佈最大鄉民們",
+                    text01: "",
+                    imgsrc: "images/house01.avif",
+                    classname: "img-fluid",
+                    rText: "輸入一段文字",
+                    the_rText: "",                //紀錄反轉後的文字
+                    price: 60,
+                    num: 10,
+                    total: 60,
+                    isRotate01: false,
+                    isRotate02: false,
+                    isRotate03: false,
+                    rText06: "請輸入一段字串(即時顯示)",
+                    product: [
+                        {
+                            name: "草莓",
+                            price: 500
+                        },
+                        {
+                            name: "香蕉",
+                            price: 50
+                        },
+                        {
+                            name: "蘋果",
+                            price: 400
+                        },
+                        {
+                            name: "橘子",
+                            price: 80
+                        },
+
+                    ]
+                }
+            },
+            methods: {
+                reverseText() {
+                    this.the_rText = this.rText.split('').reverse().join('');
+                },
+                minNum() {
+                    if (this.num > 1) {
+                        this.num--;
+                        this.total = this.num * this.price
+                    }
+                },
+                addNum() {
+                    this.num++;
+                    this.total = this.num * this.price
+                }
+            },
+            computed: {
+                reverseText01() {
+                    return this.rText06.split('').reverse().join('');
+                }
+            }
+        }
+        Vue.createApp(App).mount("#app")
+    </script>
+</body>
+
+</html>

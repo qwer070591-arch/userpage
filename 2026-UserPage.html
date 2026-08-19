@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ZH-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人首頁</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        :root {
+            /* 首頁橫幅 (Hero Banner) */
+            --banner-bg: #1a202c;
+            --banner-text: #f7fafc;
+
+            /* 個人簡介 & 學經歷 (About & Experience) */
+            --page-bg: #98999b;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --timeline-line: #e2e8f0;
+
+            /* 技能 (Skills) */
+            --skill-tag-bg: #edf2f7;
+            --skill-tag-text: #2d3748;
+
+            /* 作品集 (Portfolio) */
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --project-status-online: #48bb78;
+            --project-status-dev: #ecc94b;
+
+            /* 聯絡我 & CTA 按鈕 (Contact & Buttons) */
+            --cta-bg: #3182ce;
+            --cta-text: #ffffff;
+            --cta-hover: #2b6cb0;
+
+            /* 裝飾與次要標題 (Accents) */
+            --section-title: #4a5568;
+            --link-color: #3182ce;
+            --link-hover: #2b6cb0;
+        }
+
+        body {
+            background-color: var(--cta-text);
+        }
+
+        .s01 {
+            background-color: var(--page-bg);
+            height: 100vh;
+            position: relative;
+        }
+
+        .s01 .box01 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--skill-tag-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .s01 .box02 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--skill-tag-text);
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .s01 .box03 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--skill-tag-text);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .s01 .box04 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--skill-tag-text);
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .s01 .userImg {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            bottom: 100px;
+            right: 100px;
+            background-color: var(--section-title);
+            background-image: url(images/cat01.avif);
+            background-position: center center;
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: var(--cta-text);
+        }
+
+        .userText {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            right: 40%;
+        }
+
+        /* s02作品區 */
+        .s02 {
+            padding: 80px 10%;
+            background-color: var(--section-title);
+            text-align: center;
+        }
+
+        .s02 h2 {
+            font-size: 36px;
+        }
+
+        .s02 .card {
+            display: inline-block;
+            margin: 15px;
+            width: 240px;
+            background-color: var(--cta-bg);
+            padding: 20px;
+            text-align: left;
+            border-radius: 12px;
+        }
+
+        .s02 .card h3 {
+            color: var(--cta-text);
+            margin-top: 0;
+        }
+
+        .s02 .card p {
+            line-height: 1.5;
+            color: var(--card-bg);
+        }
+
+        .s02 .card a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--text-muted); 
+            color: var(--cta-text); 
+            text-decoration: none; 
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+        .s02 .card a:hover {
+            background-color: var(--project-status-dev);
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="s01">
+        <div class="box01"> </div>
+        <div class="box02"> </div>
+        <div class="box03"> </div>
+        <div class="box04"> </div>
+        <div class="userImg"> </div>
+        <div class="userText">
+            <h1>xxx履歷</h1>
+            <hr>
+            <h2>應徵職位:軟體工程師</h2>
+            <p>座右銘:
+                "學習永無止盡，挑戰自我不斷成長。"</p>
+        </div>
+
+        </div>
+    </section>
+    <section class="s02">
+        <h2>我的作品</h2>
+
+
+
+        <!-- 作品01 -->
+        <div class="card">
+            <h3>切版練習</h3>
+            <p>使用HTML，CSS練習切版。 </p>
+            <a href="20260527-1.html" target="_blank">查看作品</a>
+        </div>
+        <!-- 作品02 -->
+        <div class="card">
+            <h3>個人網站</h3>
+            <p>使用HTML，CSS，JavaScript製作個人展示網站。 </p>
+            <a href="#">查看作品</a>
+        </div>
+
+
+
+        <!-- 作品03 -->
+        <div class="card">
+            <h3>部落格平台</h3>
+            <p>使用HTML，CSS，JavaScript製作部落格平台。 </p>
+            <a href="#">查看作品</a>
+        </div>
+        <!-- 作品04 -->
+        <div class="card">
+            <h3>企業官網</h3>
+            <p>使用HTML，CSS，JavaScript製作企業官方網站。 </p>
+            <a href="#">查看作品</a>
+        </div>
+
+    </section>
+</body>
+
+</html>
