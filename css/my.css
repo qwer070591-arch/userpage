@@ -1,0 +1,226 @@
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100..900&display=swap');
+
+ :root {
+     /* --- 品牌核心 M Power 三色 --- */
+     --m-blue: #0066b2;
+     /* M 經典深藍（象徵 BMW 與賽車血統） */
+     --m-violet: #1d2147;
+     /* M 經典紫羅蘭/暗藍（象徵兩者融合） */
+     --m-red: #e31837;
+     /* M 經典熱血紅（象徵速度與激情） */
+
+     /* --- 主色與輔色 (應用於按鈕、標籤、亮點) --- */
+     --brand-primary: var(--m-blue);
+     /* 主色：M 經典藍 */
+     --brand-secondary: var(--m-red);
+     /* 輔色：M 熱血紅（適合用來當作 Hover 或 Accent） */
+
+     /* --- 背景顏色 (以高質感碳纖維黑、賽道灰為主調) --- */
+     --bg-main: #11141a;
+     /* 背景主色：極致深灰黑（帶有科技感，突顯車體與 M 三色） */
+     --bg-secondary: #1e222b;
+     /* 背景輔色：碳纖維深灰（用於卡片、區塊分隔） */
+     --bg-light: #f5f7fa;
+     /* 背景亮色：Alpine White 競技白（若你需要亮色切換時可用） */
+
+     /* --- 文字顏色 --- */
+     --text-primary: #ffffff;
+     /* 文字主色：純白（在深色背景下擁有最高可讀性） */
+     --text-secondary: #9095a0;
+     /* 文字輔色：鈦灰色（用於副標題、說明文字、時間標籤） */
+     --text-muted: #525866;
+     /* 文字弱化色：暗灰色（用於頁腳、版權宣告或停用狀態） */
+
+     /* --- 邊框與裝飾 --- */
+     --border-color: #2c313d;
+     /* 邊框顏色：低調深灰線條 */
+     --dark: #11141a;
+     --background-secondary: #bcc7e0;
+ }
+
+ /* --- 字體大小 --- */
+ .fw-100 {
+     font-weight: 100;
+ }
+
+ .fw-200 {
+     font-weight: 200;
+ }
+
+ .fw-300 {
+     font-weight: 300;
+ }
+
+ .fw-400 {
+     font-weight: 400;
+ }
+
+ .fw-500 {
+     font-weight: 500;
+ }
+
+ .fw-600 {
+     font-weight: 600;
+ }
+
+ .fw-700 {
+     font-weight: 700;
+ }
+
+ .fw-800 {
+     font-weight: 800;
+ }
+
+ .fw-900 {
+     font-weight: 900;
+ }
+
+ /* 字體顏色 */
+ .btn-text-primary {
+     color: var(--text-primary);
+ }
+
+ .btn-text-secondary {
+     color: var(--text-secondary);
+ }
+
+ /* 卷軸特效roller */
+
+ /* .roller-t .roller-b .roller-l .roller-r */
+ /* 由上往下 .roller-t */
+ .roller-t {
+     position: relative;
+     overflow: hidden;
+ }
+
+ .roller-t .roller_box {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+
+     /* 幾乎透明 */
+     background: rgba(255, 255, 255, 0.5);
+
+     /* 輕微柔焦 */
+     backdrop-filter: blur(3px);
+     -webkit-backdrop-filter: blur(3px);
+
+     border: 1px solid rgba(255, 255, 255, 0.5);
+
+     top: -100%;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     transition: top 1.5s;
+ }
+
+ .roller-t:hover .roller_box {
+     top: 0;
+ }
+
+ /* 由下往上 .roller-b */
+ .roller-b {
+     position: relative;
+     overflow: hidden;
+ }
+
+ .roller-b .roller_box {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+
+     /* 幾乎透明 */
+     background: rgba(255, 255, 255, 0.5);
+
+     /* 輕微柔焦 */
+     backdrop-filter: blur(3px);
+     -webkit-backdrop-filter: blur(3px);
+
+     border: 1px solid rgba(255, 255, 255, 0.5);
+
+     bottom: -100%;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     transition: bottom 1.5s;
+ }
+
+ .roller-b:hover .roller_box {
+     bottom: 0;
+ }
+
+ /* 由左往右 .roller-l */
+ .roller-l {
+     position: relative;
+     overflow: hidden;
+ }
+
+ .roller-l .roller_box {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+
+     /* 幾乎透明 */
+     background: rgba(255, 255, 255, 0.5);
+
+     /* 輕微柔焦 */
+     backdrop-filter: blur(3px);
+     -webkit-backdrop-filter: blur(3px);
+
+     border: 1px solid rgba(255, 255, 255, 0.5);
+
+     left: -100%;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     transition: left 1.5s;
+ }
+
+ .roller-l:hover .roller_box {
+     left: 0;
+ }
+
+ /* 由右往左 .roller-r */
+ .roller-r {
+     position: relative;
+     overflow: hidden;
+ }
+
+ .roller-r .roller_box {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+
+     /* 幾乎透明 */
+     background: rgba(255, 255, 255, 0.5);
+
+     /* 輕微柔焦 */
+     backdrop-filter: blur(3px);
+     -webkit-backdrop-filter: blur(3px);
+
+     border: 1px solid rgba(255, 255, 255, 0.5);
+
+     right: -100%;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     transition: right 1.5s;
+ }
+
+ .roller-r:hover .roller_box {
+     right: 0;
+ }
+
+ /*背景圖*/
+ .bg-cover {
+     background-size: cover;
+     background-position: center center;
+ }
